@@ -1,3 +1,117 @@
-<p>
-  ride works!
-</p>
+<h1 class="display-6 pt-2 mb-0"> Here </h1>
+<hr class="mb-4 mt-2 bg-dark">
+
+<form #rideInfoForm="ngForm" (ngSubmit)="createNewUser(rideInfoForm.form.valid)">
+  <div class="form-group">
+    <label for="inputAddress">Start Address</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+  </div>
+  <div class="form-group">
+    <label for="inputAddress2">Destination Address</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="1234 Main Avenue">
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputEmail4">Ride Date</label>
+      <div class="input-group">
+          <input class="form-control" type="text" (click)="d.toggle()" ngbDatepicker #d="ngbDatepicker" placeholder="yyyy-mm-dd" readonly/>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"> <span class="glyphicon glyphicon-menu-hamburger"></span></button>
+          </div>
+      </div>
+      
+      <!-- <input type="email" class="form-control" id="inputEmail4" placeholder="Email"> -->
+    </div>   
+  </div>
+  <hr>
+  <div class="clearfix"></div>
+  <div class="form-row">
+    <div class="col-md-6 col-lg-6"> 
+      <div class="form-group col-md-5">
+        <label for="inputPassword4">Ride Time</label>
+        <ngb-timepicker name="rideTime" [(ngModel)]="time" [meridian]="meridian"></ngb-timepicker>
+      </div>
+  
+    </div>
+    <div class="col-md-6 col-lg-6"> 
+      <div class="form-group col-md-5">
+        <label for="inputPassword4">Duration without Motion</label>
+        <ngb-timepicker name="noMotionDuration" [(ngModel)]="time" [meridian]="meridian"></ngb-timepicker>
+      </div>
+    </div>
+   
+   
+  </div>
+  <hr>
+  <div class="form-row">
+    <div class="col-md-6 col-lg-6">     
+            <div class="form-group col-md-8">
+              <label for="inputState">Distance Under 6 MPH</label>
+              <div class="input-group">       
+                <input type="number" class="form-control" id="inputCity">
+                <div class="input-group-append">
+                  <span class="input-group-text"> Miles </span>
+                </div>
+              </div>      
+            </div>
+          
+      
+    </div>
+    <div class="col-md-6 col-lg-6">      
+        <div class="form-group col-md-8">
+          <label for="inputState">Distance Above 6 MPH</label>
+          <div class="input-group">       
+            <input type="number" class="form-control" id="inputCity">
+            <div class="input-group-append">
+              <span class="input-group-text"> Miles </span>
+            </div>
+          </div>      
+        </div>
+    </div>
+  </div>
+  
+  <div class="form-row">
+    <div class="col-md-6 col-lg-6">
+      <div class="form-group col-md-8">
+        <label for="inputPassword4">Duration Under 6 MPH</label>
+        <ngb-timepicker name="durationUnder" [(ngModel)]="time" [meridian]="meridian"></ngb-timepicker>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-6">
+      <div class="form-group col-md-8">
+        <label for="inputPassword4">Duration Above 6 MPH</label>
+        <ngb-timepicker name="durationAbove" [(ngModel)]="time" [meridian]="meridian"></ngb-timepicker>
+      </div>
+    </div>
+
+  </div>
+  <hr>
+
+  <div class="form-row">
+        
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Sign in</button>
+</form>
+<!-- <div class="form-group col-md-5">
+  <label for="inputPassword4">Start Time</label>
+  <ngb-timepicker [(ngModel)]="time" [meridian]="meridian"></ngb-timepicker>
+</div>
+
+<ngb-timepicker [(ngModel)]="time" [meridian]="meridian"></ngb-timepicker>
+<button class="btn btn-sm btn-outline-{{meridian ? 'success' : 'danger'}}" (click)="toggleMeridian()">
+    Meridian - {{meridian ? "ON" : "OFF"}}
+</button> -->
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+     <h3 class="panel-title">
+        Panel With title
+     </h3>
+  </div>
+  <div class="panel-body">
+     Panel content
+  </div>
+</div>
