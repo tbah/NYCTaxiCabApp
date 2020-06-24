@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import { IRide, Ride } from '../models/ride';
 @Component({
   selector: 'app-ride',
   templateUrl: './ride.component.html',
@@ -7,6 +8,8 @@ import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 })
 export class RideComponent implements OnInit {
   model: NgbDateStruct;
+
+  private ride: IRide = new Ride();
   constructor() { }
 
   ngOnInit() {
@@ -16,6 +19,10 @@ export class RideComponent implements OnInit {
 
   toggleMeridian() {
       this.meridian = !this.meridian;
+  }
+
+  createRide(isValid: boolean){
+    console.log(this.ride);
   }
 
 }

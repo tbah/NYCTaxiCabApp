@@ -6,8 +6,21 @@ export interface IRide{
     durationWithSlowSpeed: Time; //c
     durationWithFastSpeed: Time; //c
     amountTimeWithoutMotion: Time;
-    RideDate: Date; //c
-    RideTime: Time; //c
+    rideDate: Date; //c
+    rideTime: Time; //c
     originAddress: string; //c
-    destinationAdrees: string; //c
+    destinationAdress: string; //c
 } 
+
+export class Ride implements IRide{
+    distanceCoveredSlowSpeed: number;
+    distanceCoveredFasterSpeed: number;
+    durationWithSlowSpeed: Time;
+    durationWithFastSpeed: Time;
+    amountTimeWithoutMotion: Time;
+    rideDate: Date;
+    rideTime: Time;
+    originAddress: string;
+    destinationAdress: string;
+
+}
