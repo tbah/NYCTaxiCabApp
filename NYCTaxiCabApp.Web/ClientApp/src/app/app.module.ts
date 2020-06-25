@@ -11,6 +11,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { RideComponent } from './ride/ride.component';
 import { RoutingModule } from './routing/routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RideService } from './services/ride.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     RoutingModule
   ],
-  providers: [],
+  providers: [RideService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

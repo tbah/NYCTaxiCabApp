@@ -31,7 +31,6 @@ export class Ride implements IRide{
     }
 
     private getMinutes(time: Time): number{
-        console.log(time)
         if(time == undefined || time == null)
             return 0;
         return time.hours * 60 + time.minutes;

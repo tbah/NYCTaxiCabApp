@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import { IRide, Ride } from '../models/ride';
+import { RideService } from '../services/ride.service';
 @Component({
   selector: 'app-ride',
   templateUrl: './ride.component.html',
@@ -13,7 +14,7 @@ export class RideComponent implements OnInit {
 
   private modelState = [];
   
-  constructor() { }
+  constructor(private _rideService: RideService) { }
 
   ngOnInit() {
     console.log(this.ride);
@@ -26,13 +27,15 @@ export class RideComponent implements OnInit {
   }
 
   createRide(isValid: boolean): void{
-    this.modelState = [];
-    this.ride.isInValid();
+    this.modelState = [];    
     if(!isValid){
       this.validateInputs();
+    }else{
+      this._rideService.addRide(this.ride).subscribe( results => {
+        console.log(results)
+      })
     }
-    console.log(this.modelState)
-    console.log(this.ride);
+   
   }
 
   validateInputs(): void{    
