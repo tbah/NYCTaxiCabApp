@@ -103,8 +103,5 @@ namespace NYCTaxiCabApp.Test.Repositories
         }
 
 
-        //decimal WeekDayPeakSurcharge(Ride ride);
-
-        //decimal NightSurcharge(Ride ride);
     }
 }

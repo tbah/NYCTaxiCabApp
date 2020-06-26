@@ -25,7 +25,7 @@ namespace NYCTaxiCabApp.Web.Models
             ride.DurationWithFastSpeed = this.DurationWithFastSpeed;
             ride.DurationWithSlowSpeed = this.DurationWithSlowSpeed;
             ride.AmountTimeWithoutMotion = this.AmountTimeWithoutMotion;
-            ride.RideDate = this.RideDate.GetDate();
+            ride.RideDate = this.RideDate != null? this.RideDate.GetDate() : DateTime.Now;
             ride.RideTime = this.RideTime;
             ride.OriginAddress = this.OriginAddress;
             ride.DestinationAdress = this.DestinationAdress;
