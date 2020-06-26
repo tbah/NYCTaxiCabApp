@@ -35,12 +35,12 @@ namespace NYCTaxiCabApp.Web.Controllers
 
         // POST: api/Ride
         [HttpPost]
-        public decimal Post(RideViewModel rideViewModel)
+        public FareSummary Post(RideViewModel rideViewModel)
         {
             Ride ride = new Ride();
             rideViewModel.UpdateModel(ride);
-            decimal dec = _rideService.Calculate(ride);
-            return dec;
+            var fareSummary = _rideService.GetFareSummary(ride);
+            return fareSummary;
         }
 
         // PUT: api/Ride/5

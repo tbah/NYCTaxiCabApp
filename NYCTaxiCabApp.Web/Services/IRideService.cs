@@ -1,4 +1,5 @@
 ﻿using NYCTaxiCabApp.Web.Entities;
+using NYCTaxiCabApp.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace NYCTaxiCabApp.Web.Services
 {
     public interface IRideService
     {
-       decimal Calculate(Ride ride);
+       FareSummary GetFareSummary(Ride ride);
 
     }
 }

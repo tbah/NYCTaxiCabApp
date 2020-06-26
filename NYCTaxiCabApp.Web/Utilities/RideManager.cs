@@ -16,9 +16,18 @@ namespace NYCTaxiCabApp.Web.Utilities
             return totalPrice;
         }
 
+        public decimal GetNYSTax()
+        {
+            return RateConstant.NYS_TAX;
+        }
+        public decimal GetRideFare(Ride ride)
+        {
+            return RateConstant.BASE_RATE + RateConstant.ADDITIONAL_UNIT * Units(ride);
+        }
+
         private int Units(Ride ride)
         {
-            int nUnits = 0;
+            int nUnits;
 
             nUnits = (int)(ride.DistanceCoveredSlowSpeed * RateConstant.UNITS_PERMILE);
 
@@ -31,7 +40,7 @@ namespace NYCTaxiCabApp.Web.Utilities
             return nUnits;
         }
 
-        private decimal WeekDayPeakSurcharge(Ride ride)
+        public decimal WeekDayPeakSurcharge(Ride ride)
         {
             if (ride.RideDate.DayOfWeek > DayOfWeek.Sunday && ride.RideDate.DayOfWeek < DayOfWeek.Saturday)
                 if (ride.RideTime.Hour >= RateConstant.WEEKDAY_PEAK_START && ride.RideTime.Hour < RateConstant.WEEKDAY_PEAK_END)
@@ -39,7 +48,7 @@ namespace NYCTaxiCabApp.Web.Utilities
             return 0;
         }
 
-        private decimal NightSurcharge(Ride ride)
+        public decimal NightSurcharge(Ride ride)
         {
             if (ride.RideTime.Hour >= RateConstant.NIGHT_SURCHARGE_START && ride.RideTime.Hour < RateConstant.NIGHT_SURCHARGE_END)
                 return RateConstant.NIGHT_SURGCHARGE;
