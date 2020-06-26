@@ -44,7 +44,7 @@ namespace NYCTaxiCabApp.Web.Repositories
 
         public decimal NightSurcharge(Ride ride)
         {
-            if (ride.RideTime.Hour >= RateConstant.NIGHT_SURCHARGE_START && ride.RideTime.Hour < RateConstant.NIGHT_SURCHARGE_END)
+            if (ride.RideTime.Hour >= RateConstant.NIGHT_SURCHARGE_START || ride.RideTime.Hour < RateConstant.NIGHT_SURCHARGE_END)
                 return RateConstant.NIGHT_SURGCHARGE;
             return 0;
         }
