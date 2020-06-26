@@ -28,10 +28,9 @@ export class RideComponent implements OnInit {
   }
 
   createRide(isValid: boolean): void{
-    this.modelState = [];    
-    if(!isValid){
-      this.validateInputs();
-    }else{
+    this.modelState = [];   
+
+    if(this.validateInputs(isValid)){
       this._rideService.addRide(this.ride).subscribe( results => {
         this._rideService.fareSummary = results;
         console.log(results);
@@ -43,13 +42,17 @@ export class RideComponent implements OnInit {
    
   }
 
-  validateInputs(): void{    
+  validateInputs(isValid: boolean): boolean{  
+      let valid = true;  
       if(this.ride.rideTime == undefined || this.ride.rideTime == null){
         this.modelState.push("Ride Time is required");
-      }
-      console.log(this.ride.isInValid())
+        valid = false;
+      }      
       if(this.ride.isInValid()){
-        this.modelState.push("At least one of the following: Distance Under 6 MPH, Distance Above 6 MPH, Duration without Motion, must have value ")
+        this.modelState.push("At least one of the following: Distance Under 6 MPH, Duration Above 6 MPH, Duration without Motion, must have value ")
+        valid = false;
       }
+      if(!isValid) valid = false;
+      return valid;
   }
 }

@@ -1,5 +1,6 @@
 ﻿using NYCTaxiCabApp.Web.Entities;
 using NYCTaxiCabApp.Web.Models;
+using NYCTaxiCabApp.Web.Repositories;
 using NYCTaxiCabApp.Web.Utilities;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,11 @@ namespace NYCTaxiCabApp.Web.Services
 {
     public class RideService: IRideService
     {
-        RideManager _rideManager;
+        IRideRepository _rideRepository;
 
-        public RideService()
+        public RideService(IRideRepository rideRepository) 
         {
-            _rideManager = new RideManager();
+            _rideRepository = rideRepository;
         }
         public FareSummary GetFareSummary(Ride ride)
         {
@@ -23,10 +24,10 @@ namespace NYCTaxiCabApp.Web.Services
             fareSummary.OriginAddress = ride.OriginAddress;
             fareSummary.RideDate = ride.RideDate;
             fareSummary.RideTime = ride.RideTime;
-            fareSummary.RideFare = _rideManager.GetRideFare(ride);
-            fareSummary.WeekdayPeakSursarge = _rideManager.WeekDayPeakSurcharge(ride);
-            fareSummary.NightSurcharge = _rideManager.NightSurcharge(ride);
-            fareSummary.NewYorkStateTax = _rideManager.GetNYSTax();
+            fareSummary.RideFare = _rideRepository.GetRideFare(ride);
+            fareSummary.WeekdayPeakSursarge = _rideRepository.WeekDayPeakSurcharge(ride);
+            fareSummary.NightSurcharge = _rideRepository.NightSurcharge(ride);
+            fareSummary.NewYorkStateTax = _rideRepository.GetNYSTax();
             
            return fareSummary;
         }   

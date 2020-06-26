@@ -26,8 +26,8 @@ export class Ride implements IRide{
 
     public isInValid(): boolean{
         let distSlow = this.distanceCoveredSlowSpeed || 0;
-        let distFast = this.distanceCoveredFasterSpeed || 0;
-        return (distSlow + distFast + this.getMinutes(this.amountTimeWithoutMotion)) <= 0 ;
+        
+        return (distSlow + this.getMinutes(this.durationWithFastSpeed) + this.getMinutes(this.amountTimeWithoutMotion)) <= 0 ;
     }
 
     private getMinutes(time: Time): number{

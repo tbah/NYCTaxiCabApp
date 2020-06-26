@@ -19,12 +19,7 @@ namespace NYCTaxiCabApp.Web.Controllers
         {
             _rideService = rideService;
         }
-        // GET: api/Ride
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+       
 
         // GET: api/Ride/5
         [HttpGet("{id}", Name = "Get")]
@@ -36,23 +31,11 @@ namespace NYCTaxiCabApp.Web.Controllers
         // POST: api/Ride
         [HttpPost]
         public FareSummary Post(RideViewModel rideViewModel)
-        {
+            {
             Ride ride = new Ride();
             rideViewModel.UpdateModel(ride);
             var fareSummary = _rideService.GetFareSummary(ride);
             return fareSummary;
-        }
-
-        // PUT: api/Ride/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string ride)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }
