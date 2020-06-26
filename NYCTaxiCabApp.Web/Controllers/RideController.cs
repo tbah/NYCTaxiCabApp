@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NYCTaxiCabApp.Web.Entities;
 using NYCTaxiCabApp.Web.Models;
+using NYCTaxiCabApp.Web.Services;
 
 namespace NYCTaxiCabApp.Web.Controllers
 {
@@ -12,6 +14,11 @@ namespace NYCTaxiCabApp.Web.Controllers
     [ApiController]
     public class RideController : ControllerBase
     {
+        private IRideService _rideService;
+        public RideController(IRideService rideService)
+        {
+            _rideService = rideService;
+        }
         // GET: api/Ride
         [HttpGet]
         public IEnumerable<string> Get()
@@ -28,9 +35,12 @@ namespace NYCTaxiCabApp.Web.Controllers
 
         // POST: api/Ride
         [HttpPost]
-        public string Post(Ride ride)
+        public decimal Post(RideViewModel rideViewModel)
         {
-            return "Here ";
+            Ride ride = new Ride();
+            rideViewModel.UpdateModel(ride);
+            decimal dec = _rideService.Calculate(ride);
+            return dec;
         }
 
         // PUT: api/Ride/5

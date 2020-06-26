@@ -1,4 +1,4 @@
-import { Time } from "@angular/common";
+import { Time } from '../models/time';
 
 export interface IRide{
     distanceCoveredSlowSpeed: number;
@@ -20,7 +20,7 @@ export class Ride implements IRide{
     durationWithFastSpeed: Time;
     amountTimeWithoutMotion: Time;
     rideDate: Date;
-    rideTime: Time;
+    rideTime: any;
     originAddress: string;
     destinationAdress: string;
 
@@ -33,7 +33,7 @@ export class Ride implements IRide{
     private getMinutes(time: Time): number{
         if(time == undefined || time == null)
             return 0;
-        return time.hours * 60 + time.minutes;
+        return time.hour * 60 + time.minute;
     }
 
 }

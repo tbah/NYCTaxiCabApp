@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NYCTaxiCabApp.Web.Models
+namespace NYCTaxiCabApp.Web.Entities
 {
     public class Time
     {
-        public int Hours { get; set; }
-        public int Minutes { get; set; }
+        public int Hour { get; set; }
+        public int Minute { get; set; }
 
         public int getInMinutes()
         {
-            return this.Hours * 60 + this.Minutes;
+            return this.Hour * 60 + this.Minute;
         }
     }
 }

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NYCTaxiCabApp.Web.Services;
 
 namespace NYCTaxiCabApp.Web
 {
@@ -27,6 +28,8 @@ namespace NYCTaxiCabApp.Web
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddScoped<IRideService, RideService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

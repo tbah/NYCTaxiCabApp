@@ -33,7 +33,9 @@ export class RideComponent implements OnInit {
     }else{
       this._rideService.addRide(this.ride).subscribe( results => {
         console.log(results)
-      })
+      });
+
+      console.log(this.ride);
     }
    
   }
@@ -47,5 +49,10 @@ export class RideComponent implements OnInit {
         this.modelState.push("At least one of the following: Distance Under 6 MPH, Distance Above 6 MPH, Duration without Motion, must have value ")
       }
   }
+
+  // defaultTimeValue(){
+  //   if(this.ride.amountTimeWithoutMotion == undefined || this.ride.amountTimeWithoutMotion == null)
+  //       this.ride.amountTimeWithoutMotion =  {hours: 13, minutes: 30};
+  // }
 
 }
