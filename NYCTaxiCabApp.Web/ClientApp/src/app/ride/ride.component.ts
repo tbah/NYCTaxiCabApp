@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import { IRide, Ride } from '../models/ride';
 import { RideService } from '../services/ride.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-ride',
   templateUrl: './ride.component.html',
@@ -14,7 +15,7 @@ export class RideComponent implements OnInit {
 
   private modelState = [];
   
-  constructor(private _rideService: RideService) { }
+  constructor(private _rideService: RideService, private router: Router) { }
 
   ngOnInit() {
     console.log(this.ride);
@@ -32,7 +33,9 @@ export class RideComponent implements OnInit {
       this.validateInputs();
     }else{
       this._rideService.addRide(this.ride).subscribe( results => {
-        console.log(results)
+        this._rideService.fareSummary = results;
+        console.log(results);
+        this.router.navigate(['/fareSummary']);
       });
 
       console.log(this.ride);
@@ -49,10 +52,4 @@ export class RideComponent implements OnInit {
         this.modelState.push("At least one of the following: Distance Under 6 MPH, Distance Above 6 MPH, Duration without Motion, must have value ")
       }
   }
-
-  // defaultTimeValue(){
-  //   if(this.ride.amountTimeWithoutMotion == undefined || this.ride.amountTimeWithoutMotion == null)
-  //       this.ride.amountTimeWithoutMotion =  {hours: 13, minutes: 30};
-  // }
-
 }

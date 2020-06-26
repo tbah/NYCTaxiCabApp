@@ -12,6 +12,7 @@ import { RideComponent } from './ride/ride.component';
 import { RoutingModule } from './routing/routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RideService } from './services/ride.service';
+import { FareSummaryComponent } from './fare-summary/fare-summary.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { RideService } from './services/ride.service';
     CounterComponent,
     FetchDataComponent,
     RideComponent,
+    FareSummaryComponent,
     
   ],
   imports: [

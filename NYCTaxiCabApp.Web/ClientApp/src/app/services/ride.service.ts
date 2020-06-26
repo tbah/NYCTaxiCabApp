@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IRide } from '../models/ride';
 import { Observable, of, from } from 'rxjs';
 import { catchError} from 'rxjs/operators'
+import { IFareSummary } from '../models/fare-summary';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,12 +17,14 @@ export class RideService {
       this.baseUrl = baseUrl;
    }
 
-  addRide(ride: IRide):Observable<any>{
+  public fareSummary: IFareSummary;
+  
+  addRide(ride: IRide):Observable<IFareSummary>{
     let url: string = this.baseUrl + "api/Ride";
     console.log(this.baseUrl);
-    return this._httpClient.post<IRide>(url, ride, httpOptions)
+    return this._httpClient.post<IFareSummary>(url, ride, httpOptions)
       .pipe(
-        catchError(this.handleError<IRide>('addRide'))
+        catchError(this.handleError<IFareSummary>('addRide'))
       );
   }
 
