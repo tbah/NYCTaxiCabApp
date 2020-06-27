@@ -1,3 +1,110 @@
-<p>
-  ride works!
-</p>
+<h3>Ride Form</h3>
+
+<p>Fill this form and submit to get your fare summary from the server.</p>
+
+<hr class="mb-4 mt-2 bg-dark">
+
+<div class="card bg-light text-dark">
+    <div class="card-body">
+      <form #rideInfoForm="ngForm" (ngSubmit)="createRide(rideInfoForm.form.valid)">
+
+            <ul>
+              <li *ngFor="let error of modelState" class="text-danger">
+                {{error}}
+              </li>
+            </ul>
+        <div class="form-group">
+          <label for="startAddress">Start Address</label>
+          <input type="text" class="form-control" name="startAddress" [(ngModel)]="ride.originAddress" #startAddress="ngModel" [ngClass]="{ 'is-invalid': rideInfoForm.submitted && startAddress.invalid }" required placeholder="1234 Main St">
+          <div *ngIf="rideInfoForm.submitted && startAddress.invalid" class="invalid-feedback">
+            <div *ngIf="startAddress.errors.required">Start Address is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="destAddress">Destination Address</label>
+          <input type="text" class="form-control" name="destAddress" [(ngModel)]="ride.destinationAdress" #originAddress="ngModel" [ngClass]="{ 'is-invalid': rideInfoForm.submitted && originAddress.invalid }" required placeholder="1234 Main Avenue">
+          <div *ngIf="rideInfoForm.submitted && originAddress.invalid" class="invalid-feedback">
+            <div *ngIf="originAddress.errors.required">Origin Address is required</div>
+          </div>
+        </div>
+      
+        <div class="form-row">
+          <div class="col-md-6 col-lg-6">
+            <div class="form-group col-md-8">
+              <label for="rideDate">Ride Date</label>
+              <div class="input-group">
+                  <input class="form-control" type="text" name="rideDate" [(ngModel)]="ride.rideDate" (click)="d.toggle()" ngbDatepicker #d="ngbDatepicker" placeholder="yyyy-mm-dd" #rideDate="ngModel" [ngClass]="{ 'is-invalid': rideInfoForm.submitted && rideDate.invalid }" required readonly/>
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"> <span class="glyphicon glyphicon-menu-hamburger"></span></button>
+                  </div>
+              </div>
+              <div *ngIf="rideInfoForm.submitted && rideDate.invalid" class="invalid-feedback">
+                  <div *ngIf="rideDate.errors.required">Ride Date is required</div>
+              </div>
+            </div> 
+          </div>
+          <div class="col-md-6 col-lg-6">
+               
+              <div class="form-group col-md-8">
+                <label for="inputState">Distance Under 6 MPH</label>
+                <div class="input-group">       
+                  <input type="text" name="distanceUnder" [(ngModel)]="ride.distanceCoveredSlowSpeed" class="form-control" id="inputCity">
+                  <div class="input-group-append">
+                    <span class="input-group-text"> Miles </span>
+                  </div>
+                </div>      
+              </div>  
+            
+          </div>
+            
+        </div>
+        <hr>
+        
+        <div class="form-row">
+          <div class="col-md-6 col-lg-6"> 
+            <div class="form-group col-md-5">
+              <label for="rideTime">Ride Time</label>
+              <ngb-timepicker name="rideTime" [(ngModel)]="ride.rideTime" [meridian]="meridian" #rideTime="ngModel" required></ngb-timepicker>
+              <div *ngIf="rideInfoForm.submitted && rideTime.invalid" class="invalid-feedback">
+                <div *ngIf="rideTime.errors.required">Ride Time is required</div>
+              </div>
+            </div>
+            
+        
+          </div>
+          
+          <div class="col-md-6 col-lg-6">
+            <div class="form-group col-md-8">
+              <label for="durationUnder">Duration Under 6 MPH</label>
+              <ngb-timepicker name="durationUnder" [(ngModel)]="ride.durationWithSlowSpeed"></ngb-timepicker>
+            </div>
+          </div>
+         
+         
+        </div>
+        <hr>
+        
+        <div class="form-row">
+          <div class="col-md-6 col-lg-6"> 
+            <div class="form-group col-md-5">
+              <label for="noMotionDuration">Duration without Motion</label>
+              <ngb-timepicker name="noMotionDuration" [(ngModel)]="ride.amountTimeWithoutMotion"></ngb-timepicker>
+            </div>
+          </div>
+      
+          <div class="col-md-6 col-lg-6">
+            <div class="form-group col-md-8">
+              <label for="durationAbove">Duration Above 6 MPH</label>
+              <ngb-timepicker name="durationAbove" [(ngModel)]="ride.durationWithFastSpeed"></ngb-timepicker>
+            </div>
+          </div>
+      
+        </div>
+        <hr>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      
+    </div>
+</div>
+

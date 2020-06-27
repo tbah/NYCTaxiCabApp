@@ -1,0 +1,68 @@
+
+
+<div class="row">
+  <div class="col-md-4 order-md-2 mb-4">
+    <h4 class="d-flex justify-content-between align-items-center mb-3">
+      <span class="text-muted">Ride Summary</span>
+     
+    </h4>
+    <ul class="list-group mb-3">
+      <li class="list-group-item d-flex justify-content-between lh-condensed">
+        <div>
+          <h6 class="my-0">Ride Date</h6>
+          <small class="text-muted">{{fareSummary.rideDate | date:'fullDate'}}</small>
+        </div>
+        <span class="text-muted">{{time}}</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between lh-condensed">
+        <div>
+          <h6 class="my-0">Start at</h6>
+          <small class="text-muted">{{fareSummary.originAddress}}</small>
+        </div>
+        
+      </li>
+      <li class="list-group-item d-flex justify-content-between lh-condensed">
+        <div>
+          <h6 class="my-0">Drop off </h6>
+          <small class="text-muted">{{fareSummary.destinationAddress}}</small>
+        </div>
+        
+      </li>
+     
+      <li class="list-group-item d-flex justify-content-between lh-condensed">
+        <div>
+          <h6 class="my-0">Ride Fare</h6>
+          <small class="text-muted">Base fare plus additional cost per unit</small>
+        </div>
+        <span class="text-muted">${{fareSummary.rideFare}}</span>
+      </li>
+      <li *ngIf="fareSummary.weekdayPeakSursarge !== 0" class="list-group-item d-flex justify-content-between lh-condensed">
+        <div>
+          <h6 class="my-0">Peak Surcharge</h6>
+          <small class="text-muted">Weekday peak from 4pm to 8pm</small>
+        </div>
+        <span class="text-muted">${{fareSummary.weekdayPeakSursarge}}</span>
+      </li>
+
+      <li *ngIf="fareSummary.nightSurcharge !== 0" class="list-group-item d-flex justify-content-between lh-condensed">
+        <div>
+          <h6 class="my-0">Night Surcharge</h6>
+          <small class="text-muted">Night Surcharge from 8pm to 6am</small>
+        </div>
+        <span class="text-muted">${{fareSummary.nightSurcharge}}</span>
+      </li>
+
+      <li class="list-group-item d-flex justify-content-between lh-condensed">
+        <div>
+          <h6 class="my-0">New York State Tax</h6>          
+        </div>
+        <span class="text-muted">${{fareSummary.newYorkStateTax}}</span>
+      </li>
+      
+      <li class="list-group-item d-flex justify-content-between">
+        <span>Total (USD)</span>
+        <strong>${{fareSummary.totalPrice}}</strong>
+      </li>
+    </ul>
+  </div>
+
