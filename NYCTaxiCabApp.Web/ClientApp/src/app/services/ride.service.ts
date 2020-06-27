@@ -12,13 +12,13 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class RideService {
-  private baseUrl: string;
-  constructor(private _httpClient: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-      this.baseUrl = baseUrl;
+  private baseUrl: string = "";
+  constructor(private _httpClient: HttpClient) {
+      //this.baseUrl = baseUrl;
    }
 
   public fareSummary: IFareSummary;
-  
+
   addRide(ride: IRide):Observable<IFareSummary>{
     let url: string = this.baseUrl + "api/Ride";
     console.log(this.baseUrl);

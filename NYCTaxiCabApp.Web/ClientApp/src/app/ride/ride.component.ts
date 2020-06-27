@@ -18,7 +18,7 @@ export class RideComponent implements OnInit {
   constructor(private _rideService: RideService, private router: Router) { }
 
   ngOnInit() {
-    console.log(this.ride);
+    
   }
   time = {hour: 13, minute: 30};
   meridian = true;
